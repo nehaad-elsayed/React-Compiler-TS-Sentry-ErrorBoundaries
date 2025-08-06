@@ -1,16 +1,17 @@
 import React from "react";
 import { ErrorBoundary as SentryErrorBoundary } from "@sentry/react";
 
+//& function ll error fallback 3shan y3ml display elerror 
 function ErrorFallback({
   error,
   componentStack,
   eventId,
   resetError,
 }: {
-  error: unknown;
-  componentStack: string;
-  eventId: string;
-  resetError: () => void;
+  error: unknown; //&unknown 3shan yst2bl ay no3 error 
+  componentStack: string; //& path elcomponnent elly 7asal feeh elerror 
+  eventId: string; //& id elerror 3shan yzhar ll team 
+  resetError: () => void; //& function 3shan y3ml reset elerror 
 }) {
   return (
     <div
@@ -47,7 +48,7 @@ function ErrorFallback({
       >
         Try again
       </button>
-      {import.meta.env.DEV && (
+      {import.meta.env.DEV && (   //&y3ny da hytnfz  f eldev mode bs // env da variable by2oli ana f ay mode 
         <details style={{ marginTop: "10px" }}>
           <summary style={{ cursor: "pointer", color: "#636e72" }}>
             Error Details
@@ -70,16 +71,17 @@ function ErrorFallback({
   );
 }
 
+//& interface ll props
 interface CustomErrorBoundaryProps {
   children: React.ReactNode;
 }
 
 export function CustomErrorBoundary({ children }: CustomErrorBoundaryProps) {
   return (
-    <SentryErrorBoundary fallback={ErrorFallback}>
+    <SentryErrorBoundary fallback={ErrorFallback}>  //& by3rdly elfallback lw feeh error
       {children}
     </SentryErrorBoundary>
   );
 }
 
-export default CustomErrorBoundary;
+export default CustomErrorBoundary; //& w ast5dmo ba2a f ay makan a8lf beeh ay component (nfs elly bemlo m3 elcontext)
